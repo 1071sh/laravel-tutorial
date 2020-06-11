@@ -8,11 +8,19 @@ use \App\Student;
 class StudentsController extends Controller
 {
     // 一覧画面
-    public function index()
+    public function index(Request $request)
     {
+        //キーワード受け取り
+        $keyword = $request->input('keyword');
+        //クエリ生成
         $query = \App\Student::query();
-        $students = $query->orderBy('id', 'asc')->paginate(10);
-        return view('student.list')->with('students', $students);
+        //もしキーワードがあったら
+        if (!empty($keyword)) {
+            $query->where('email', 'like', '%'.$keyword.'%')->orWhere('name', 'like', '%'.$keyword.'%');
+        }
+        //ページネーション
+        $students = $query->orderBy('id', 'desc')->paginate(10);
+        return view('student.list')->with('students', $students)->with('keyword', $keyword);
     }
 
     // 新規登録

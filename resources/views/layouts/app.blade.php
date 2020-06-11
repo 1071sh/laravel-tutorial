@@ -8,15 +8,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
     <style type="text/css">
-        /* ここに調整CSS記述 */
+        .pagination {
+            margin: 40px 0 0;
+            justify-content: center;
+        }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-light navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">@yield('title')</a>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="{{ url('/') }}">@yield('title')</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+            @yield('form');
+        </div>
     </nav>
-    <div class="container">
+
+
+    <div class="container pt-4 pb-4">
         @yield('content')
     </div>
     <!-- Optional JavaScript -->

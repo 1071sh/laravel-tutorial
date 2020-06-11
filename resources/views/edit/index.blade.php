@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', '一覧画面')
+@section('title', '編集画面')
 
 @section('content')
 <form action="" method="post" class="form-horizontal">
